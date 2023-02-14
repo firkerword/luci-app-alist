@@ -50,7 +50,7 @@ CHECK() (
 DOWNLOAD() (
 	echo -e "\r\n${GREEN_COLOR}Download Packages ...${RES}\r\n"
 	# get repos info
-	curl -sk --connect-timeout 10 "https://api.github.com/repos/sbwml/luci-app-alist/releases" | grep "browser_download_url" > $TMPDIR/releases.txt
+	curl -sk --connect-timeout 10 "https://api.github.com/repos/firkerword/luci-app-alist/releases" | grep "browser_download_url" > $TMPDIR/releases.txt
 	if [ $? -ne 0 ]; then
 		echo -e "${RED_COLOR}Failed to get version information, Please check the network status.${RES}"
 		rm -rf $TMPDIR
