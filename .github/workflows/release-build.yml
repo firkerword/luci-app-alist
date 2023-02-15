@@ -7,10 +7,10 @@ on:
   repository_dispatch:
   workflow_dispatch:
     inputs:
-      applications:
-        description: 'build applications, eg: "alist". "all" means build all'
+      tag:
+        description: 'build tag, eg: "alist v3.11.0".'
         required: true
-        default: 'alist'
+        default: ''
 
 jobs:
   build:
@@ -32,7 +32,7 @@ jobs:
         env:
           ARCH: ${{ matrix.arch }}-openwrt-21.02
           FEEDNAME: packages_ci
-          PACKAGES: luci-app-${{ github.event.inputs.applications }}
+          PACKAGES: luci-app-alist
           NO_REFRESH_CHECK: true
 
       - name: Upload artifacts
@@ -47,5 +47,5 @@ jobs:
           token: ${{ secrets.workflow_token }}
           allowUpdates: true
           replacesArtifacts: true
-          tag: "${{ github.event.inputs.applications }}-${{ matrix.arch }}"
+          tag: "${{ github.event.inputs.tag }}"
           artifacts: "bin/packages/${{ matrix.arch }}/packages_ci/*.ipk"
