@@ -47,5 +47,5 @@ jobs:
           token: ${{ secrets.workflow_token }}
           allowUpdates: true
           replacesArtifacts: true
-          tag: 	"${{ github.event.inputs.applications }}-${{ matrix.arch }}"
+          tag: "${{ github.event.inputs.applications }}-${{ matrix.arch }}"
           artifacts: "bin/packages/${{ matrix.arch }}/packages_ci/*.ipk"
