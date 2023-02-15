@@ -1,8 +1,6 @@
 name: alist x86-64
 
 on:
-    types:
-      - published
   repository_dispatch:
   workflow_dispatch:
     inputs:
