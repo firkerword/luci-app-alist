@@ -7,10 +7,10 @@ on:
   repository_dispatch:
   workflow_dispatch:
     inputs:
-      target:
-        description: 'build target ["x64","all"]'
+      applications:
+        description: 'build applications, eg: "alist". "all" means build all'
         required: true
-        default: 'all'
+        default: 'alist'
 
 jobs:
   build:
@@ -32,7 +32,7 @@ jobs:
         env:
           ARCH: ${{ matrix.arch }}-openwrt-21.02
           FEEDNAME: packages_ci
-          PACKAGES: luci-app-alist
+          PACKAGES: luci-app-${{ github.event.inputs.applications }}
           NO_REFRESH_CHECK: true
 
       - name: Upload artifacts
