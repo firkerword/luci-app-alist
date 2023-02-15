@@ -1,4 +1,4 @@
-name: Build
+name: alist x86-64
 
 on:
     types:
